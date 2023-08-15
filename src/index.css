@@ -1,0 +1,219 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  background-color: rgba(124, 255, 255, 0.54);
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin-top: 0;
+  background-color: aliceblue;
+  color: violet;
+  text-align: center;
+  padding: 2rem;
+}
+form {
+  margin: 30px auto;
+  width: 55%;
+  background-color: #fff;
+  height: 4.5rem;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  border-radius: 1rem;
+  position: relative;
+}
+.search-icon {
+  font-size: 1.5rem;
+  margin: 0 1rem;
+  color: rgb(221, 185, 221);
+}
+input {
+  outline: none;
+  border: 1px solid rgb(223, 223, 235);
+  height: 1rem;
+  width: 35rem;
+  font-size: 1.2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  color: blueviolet;
+}
+
+button {
+  height: 3rem;
+  border-radius: 1rem;
+  outline: none;
+  border: 1px solid rgb(184, 52, 184);
+  position: absolute;
+  right: 2%;
+  /* margin-top: 10px; */
+  padding: 0 1.5rem;
+  cursor: pointer;
+  background-color: darkorchid;
+  color: rgb(248, 234, 248);
+  font-weight: 600;
+  font-size: 1.2rem;
+  transition: all 0.3s linear;
+}
+
+button:hover {
+  background-color: aqua;
+  color: darkblue;
+}
+
+.list-container {
+  min-height: 55vh;
+}
+
+.list-container h2 {
+  padding-left: 10rem;
+  color: violet;
+  font-weight: normal;
+}
+.list-container h2 span {
+  font-style: italic;
+  font-weight: bold;
+}
+
+ul {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(3, 22rem);
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+li img {
+  width: 5rem;
+  border-radius: 50%;
+}
+
+li h5 {
+  color: rgb(221, 185, 221);
+}
+.card {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 1rem;
+
+  position: relative;
+}
+.user-info {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+}
+h3 {
+  margin-left: 15px;
+}
+.user-info a {
+  color: blue;
+  border: 1px solid blueviolet;
+  border-radius: 1rem;
+  padding: 10px 15px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 7%;
+  right: 5%;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.user-info a:hover {
+  background-color: rgb(95, 95, 231);
+  color: #fff;
+}
+
+footer {
+  text-align: center;
+  padding: 40px;
+}
+
+footer p {
+  color: rgb(221, 185, 221);
+}
+footer a {
+  margin-left: 5px;
+}
+
+.fancy-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 5rem;
+  height: 5rem;
+}
+.fancy-spinner div {
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+.fancy-spinner div.ring {
+  border-width: 0.5rem;
+  border-style: solid;
+  border-color: transparent;
+  -webkit-animation: 2s fancy infinite alternate;
+  animation: 2s fancy infinite alternate;
+}
+.fancy-spinner div.ring:nth-child(1) {
+  border-left-color: #979fd0;
+  border-right-color: #979fd0;
+}
+.fancy-spinner div.ring:nth-child(2) {
+  border-top-color: #979fd0;
+  border-bottom-color: #979fd0;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+.fancy-spinner div.dot {
+  width: 1rem;
+  height: 1rem;
+  background: #979fd0;
+}
+
+@-webkit-keyframes fancy {
+  to {
+    transform: rotate(360deg) scale(0.5);
+  }
+}
+
+@keyframes fancy {
+  to {
+    transform: rotate(360deg) scale(0.5);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  form {
+    width: 80%;
+    height: 3rem;
+  }
+  form button {
+    height: 2rem;
+    font-size: 0.8rem;
+
+    padding: 0 0.5rem;
+  }
+  form input {
+    width: 12.5rem;
+    font-size: 0.8rem;
+  }
+  .search-icon {
+    font-size: initial;
+    margin: 0 7px;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(1, 22rem);
+  }
+}
