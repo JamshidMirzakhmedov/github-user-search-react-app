@@ -1,18 +1,33 @@
 import Footer from "./Footer";
-import { useState } from "react";
 import SearchForm from "./components/SearchForm";
-import UserList from "./components/UserList";
+import Details from "./components/Details";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      cacheTime: Infinity,
+    },
+  },
+});
 
 function App() {
-  const [searchUsername, setSearchUsername] = useState("jamshidmirzakhmedov");
-
   return (
-    <div className="App">
-      <h1>GitHub User Search</h1>
-      <SearchForm setSearch={setSearchUsername} />
-      <UserList searchUsername={searchUsername} />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <header>
+          <Link to="/">GitHub User Search</Link>
+        </header>
+        <Routes>
+          <Route path="/" element={<SearchForm />} />
+
+          <Route path="/details/:name" element={<Details />} />
+        </Routes>
+        <Footer />
+      </QueryClientProvider>
+    </BrowserRouter>
   );
 }
 

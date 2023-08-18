@@ -1,27 +1,42 @@
 import { useState } from "react";
 import { BsSearch } from "react-icons/bs";
+import { useQuery } from "@tanstack/react-query";
+import fetchSearch from "../fetchSearch";
+import UserList from "./UserList";
 
-const SearchForm = ({ setSearch }) => {
-  const [username, setUsername] = useState("");
+const SearchForm = () => {
+  const [requestParam, setRequestParam] = useState("jamshidmirzakhmedov");
+  // const [users, setUsers] = useState([]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setSearch(username);
-  };
+  const results = useQuery(["search", requestParam], fetchSearch);
+
+  const users = results?.data?.items ?? [];
+
+  console.log(users);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <BsSearch className="search-icon" />
-      <input
-        type="text"
-        placeholder="Enter GitHub username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <button disabled={!username} type="submit">
-        Search
-      </button>
-    </form>
+    <main>
+      <form
+        onSubmit={(e) => {
+          event.preventDefault();
+          const formData = new FormData(e.target);
+          const name = formData.get("searchName") ?? "jamshidmirzakhmedov";
+          setRequestParam(name);
+        }}
+      >
+        <BsSearch className="search-icon" />
+        <input
+          type="text"
+          placeholder="Enter GitHub username"
+          name="searchName"
+        />
+        <button disabled={!requestParam} type="submit">
+          Search
+        </button>
+      </form>
+
+      <UserList users={users} />
+    </main>
   );
 };
 
